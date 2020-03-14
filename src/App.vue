@@ -12,6 +12,8 @@ import LoginForm from './components/LoginForm.vue'
 import MainContainer from './components/MainContainer.vue'
 import Footer from './components/Footer.vue'
 
+import { mapGetters } from 'vuex'
+
 export default {
   components: {
     'app-login-form': LoginForm,
@@ -20,16 +22,17 @@ export default {
   },
   data () {
     return {
-      application: {
-        authorized: false,
-        userSettings: {
-          userRole: 'admin'
-        }
-      },
+      // application: {
+      //   authorized: false,
+      //   userSettings: {
+      //     userRole: 'admin'
+      //   }
+      // },
       loggedIn: false,
       mainContainer: 'app-login-form'
     }
   },
+  computed: mapGetters(['application']),
   created () {
     eventBus.$on('login', () => {
       this.loggedIn = !this.loggedIn
