@@ -1,6 +1,6 @@
 <template>
   <ul>
-    <li v-for='(item,index) in menuItems'
+    <li v-for='(item,index) in getCategories'
         :key="item"
         :id="item"
         :class="{'active':activeIndex === index }"
@@ -11,9 +11,7 @@
 </template>
 
 <script>
-import { localeRu } from '../main'
-import { USER } from '../js/Utils/Constants'
-import { LocaleKey } from '../js/Utils/LocaleKey'
+import { mapGetters } from 'vuex'
 
 export default {
   props: [
@@ -22,57 +20,10 @@ export default {
   components: {},
   data () {
     return {
-      menuItems: [],
-      locale: localeRu,
       activeIndex: 0
     }
   },
-  created: function () {
-    this.initMenu(this.userRole)
-    // this.createMainContainerViews()
-  },
-  methods: {
-    initMenu: function (userRole) {
-      this.menuItems = this.getMenuItems(userRole)
-    },
-    getMenuItems: function (userRole) {
-      switch (userRole) {
-        case USER.ROLE.ADMIN: {
-          return [
-            this.locale[LocaleKey.ORDERS],
-            this.locale[LocaleKey.REPORTS],
-            this.locale[LocaleKey.CALENDAR],
-            this.locale[LocaleKey.FACTORIES],
-            this.locale[LocaleKey.PROVIDERS],
-            this.locale[LocaleKey.STOCK]
-          ]
-        }
-        case USER.ROLE.DIRECTOR: {
-          return [
-            this.locale[LocaleKey.ORDERS],
-            this.locale[LocaleKey.REPORTS],
-            this.locale[LocaleKey.CALENDAR],
-            this.locale[LocaleKey.STOCK]
-          ]
-        }
-        case USER.ROLE.VENDOR: {
-          return [
-            this.locale[LocaleKey.ORDERS],
-            this.locale[LocaleKey.CALENDAR],
-            this.locale[LocaleKey.STOCK]
-          ]
-        }
-        default:
-          break
-      }
-    }
-  },
-  setActive: function (index) {
-    this.activeIndex = index
-  },
-  createMainContainerViews: function () {
-
-  }
+  computed: mapGetters(['getCategories'])
 }
 </script>
 

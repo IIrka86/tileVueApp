@@ -18,5 +18,4 @@ new Vue({ // eslint-disable-line no-new
   render: h => h(App)
 }).$mount('#app')
 
-// console.log(LocaleRu);
-export const localeRu = LocaleRu
+export const locale = LocaleRu

@@ -1,22 +1,22 @@
-export const CATEGORY = {
-    CALENDAR: "calendar",
-    FACTORIES: "factories",
-    ORDERS: "orders",
-    PROVIDERS: "providers",
-    REPORTS: "reports",
-    STOCK: "stock",
-
-};
-
+// const CATEGORY = {
+//     CALENDAR: "calendar",
+//     FACTORIES: "factories",
+//     ORDERS: "orders",
+//     PROVIDERS: "providers",
+//     REPORTS: "reports",
+//     STOCK: "stock",
+//
+// };
+//
 export const USER = {
-  ROLE:{
+  ROLE: {
     ADMIN: 'admin',
     DIRECTOR: 'director',
     VENDOR: 'vendor'
   }
-};
+}
 
-/**<li><a href="#manegers">Менеджеры</a></li>
+/** <li><a href="#manegers">Менеджеры</a></li>
             <li><a href="#factorys">Производители</a></li>
             <li><a href="#providers">Поставщики</a></li>
             <li><a href="#stock">Склад</a></li>
@@ -32,4 +32,4 @@ export const USER = {
                  <li><a href="#menegers">Рейтинг менеджеров</a></li>
             <li><a href="#report">Отчеты</a></li>
             <li><a href="#orders">Заказы</a></li>
-            <li><a href="/">Выход</a></li>*/
+            <li><a href="/">Выход</a></li> */

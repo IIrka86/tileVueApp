@@ -1,7 +1,7 @@
 <template>
   <div id="login-form">
     <div class="form-container">
-      <form action="" method="">
+      <form @submit.prevent="submit">
         <div class="form-group row">
           <div class="col-sm-12">
             <h1>{{title}}</h1>
@@ -10,7 +10,7 @@
         <div class="form-group row">
           <label for="login" class="col-sm-3 col-form-label">Логин</label>
           <div class="col-sm-9">
-            <input id="login" name="login" class="form-control" type="text" placeholder="Логин">
+            <input id="login" name="login" class="form-control" type="text" placeholder="Логин" v-model="userRole">
           </div>
         </div>
         <div class="form-group row">
@@ -21,7 +21,7 @@
         </div>
         <div class="form-group row">
           <div class="col-sm-12">
-            <input v-on:click='login' id="login-btn" type="submit" value="Войти" class="btn btn-block">
+            <input id="login-btn" type="submit" value="Войти" class="btn btn-block">
           </div>
         </div>
         <div class="form-group row">
@@ -36,17 +36,26 @@
 
 <script>
 import { eventBus } from '../main'
+import { mapMutations, mapActions } from 'vuex'
 
 export default {
   components: {},
   data () {
     return {
+      userRole: '',
       title: 'Плитка в Вилейке',
       error: true,
       errorMessage: 'Uncorrect password or login'
     }
   },
   methods: {
+    ...mapMutations(['updateUserRole']),
+    ...mapActions(['initMenuItems']),
+    submit () {
+      this.updateUserRole(this.userRole)
+      this.initMenuItems(this.userRole)
+      this.login()
+    },
     login: function () {
       eventBus.$emit('login')
     }
