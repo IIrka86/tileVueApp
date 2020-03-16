@@ -1,3 +1,10 @@
+export const APPLICATION = {
+  TITLE: 'title',
+  LOGIN: 'login',
+  LOGOUT: 'logout',
+  PASSWORD: 'password'
+}
+
 export const CATEGORY = {
   CALENDAR: 'calendar',
   FACTORIES: 'factories',
@@ -18,6 +25,14 @@ export const USER = {
 export const LAYOUT = {
   LEFT_MENU: 'left-menu-layout',
   TABLE: 'table-layout'
+}
+
+export const COMPONENTS = {
+  LOGIN_FORM: 'app-login-form',
+  MAIN_CONTAINER: 'app-main-container',
+  HEADER: 'app-header',
+  FOOTER: 'app-footer',
+  TOP_MENU: 'top-menu'
 }
 
 /** <li><a href="#manegers">Менеджеры</a></li>

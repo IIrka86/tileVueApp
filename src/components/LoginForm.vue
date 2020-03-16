@@ -4,19 +4,19 @@
       <form @submit.prevent="submit">
         <div class="form-group row">
           <div class="col-sm-12">
-            <h1>{{title}}</h1>
+            <h1>{{titleKey}}</h1>
           </div>
         </div>
         <div class="form-group row">
-          <label for="login" class="col-sm-3 col-form-label">Логин</label>
+          <label for="login" class="col-sm-3 col-form-label">{{loginKey}}</label>
           <div class="col-sm-9">
-            <input id="login" name="login" class="form-control" type="text" placeholder="Логин" v-model="userRole">
+            <input id="login" name="login" class="form-control" type="text" v-model="userRole">
           </div>
         </div>
         <div class="form-group row">
-          <label for="password" class="col-sm-3 col-form-label">Пароль</label>
+          <label for="password" class="col-sm-3 col-form-label">{{passwordKey}}</label>
           <div class="col-sm-9">
-            <input id="password" name="password" class="form-control" type="password" placeholder="Пароль">
+            <input id="password" name="password" class="form-control" type="password">
           </div>
         </div>
         <div class="form-group row">
@@ -36,27 +36,24 @@
 
 <script>
 import { eventBus } from '../main'
-import { mapMutations, mapActions } from 'vuex'
+import { mapMutations, mapActions, mapGetters } from 'vuex'
 
 export default {
-  components: {},
   data () {
     return {
       userRole: '',
-      title: 'Плитка в Вилейке',
+      password: '',
       error: true,
       errorMessage: 'Uncorrect password or login'
     }
   },
+  computed: mapGetters(['titleKey', 'loginKey', 'passwordKey']),
   methods: {
     ...mapMutations(['updateUserRole']),
     ...mapActions(['initMenuItems']),
     submit () {
       this.updateUserRole(this.userRole)
       this.initMenuItems(this.userRole)
-      this.login()
-    },
-    login: function () {
       eventBus.$emit('login')
     }
   }

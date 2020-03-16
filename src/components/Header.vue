@@ -2,11 +2,11 @@
   <header>
     <div class="header-container">
       <div class="title">
-        <h1>{{title}}</h1>
-        <h2 v-on:click="getCategories('admin')">{{role}}</h2>
+        <h1>{{titleKey}}</h1>
+        <h2>{{userRoleTitle}}</h2>
       </div>
       <div class="menu-items">
-        <top-menu v-bind:user-role="userRole"></top-menu>
+        <top-menu></top-menu>
       </div>
     </div>
   </header>
@@ -14,36 +14,13 @@
 
 <script>
 import TopMenu from './TopMenu.vue'
+import { mapGetters } from 'vuex'
 
 export default {
-  props: [
-    'userRole'
-  ],
   components: {
     'top-menu': TopMenu
   },
-  data () {
-    return {
-      title: 'Плитка в Вилейке',
-      role: 'Администратор'
-    }
-  },
-  methods: {
-    getCategories: function (role) {
-      switch (role) {
-        case 'admin' : {
-          // return [
-          //   CATEGORY.CALENDAR,
-          //   CATEGORY.FACTORIES,
-          //   CATEGORY.ORDERS,
-          //   CATEGORY.PROVIDERS,
-          //   CATEGORY.REPORTS,
-          //   CATEGORY.STOCK,
-          // ];
-        }
-      }
-    }
-  }
+  computed: mapGetters(['titleKey', 'userRoleTitle'])
 }
 </script>
 

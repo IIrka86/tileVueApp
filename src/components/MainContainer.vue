@@ -1,10 +1,10 @@
 <template>
   <div>
-    <app-header v-bind:userRole="userRole"></app-header>
+    <app-header></app-header>
     <div id="main-container">
       <div v-for="(item, index) in getLayouts"
            :id="item.category"
-           :class="{'active':activeIndex === index }"
+           :class="{'active':activeCategoryIndex === index }"
            :key="item.category">
         <p>{{item.category}}</p>
       </div>
@@ -17,23 +17,19 @@ import Header from './Header.vue'
 import { mapGetters, mapMutations } from 'vuex'
 
 export default {
-  props: [
-    'userRole'
-  ],
   components: {
     'app-header': Header
   },
-  data () {
-    return {
-      title: 'Tile App'
-    }
-  },
-  computed: mapGetters(['getLayouts', 'categoryByIndex', 'activeIndex']),
+  computed: mapGetters([
+    'getLayouts',
+    'categoryByIndex',
+    'activeCategoryIndex'
+  ]),
   methods: {
-    ...mapMutations(['updateActive'])
+    ...mapMutations(['setActiveCategory'])
   },
   beforeMount () {
-    this.updateActive(0, this.categoryByIndex(0))
+    this.setActiveCategory(0, this.categoryByIndex(0))
   }
 }
 

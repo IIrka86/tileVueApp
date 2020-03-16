@@ -12,10 +12,9 @@ import store from './store'
 // import * as uiv from 'uiv'
 
 export const eventBus = new Vue()
+export const locale = LocaleRu
 
 new Vue({ // eslint-disable-line no-new
   store,
   render: h => h(App)
 }).$mount('#app')
-
-export const locale = LocaleRu

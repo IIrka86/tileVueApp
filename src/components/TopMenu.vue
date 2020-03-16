@@ -1,12 +1,10 @@
 <template>
   <ul>
-    <li v-for='(item,index) in getMenuItems'
+    <li v-for='(item,index) in menuItems'
         :key="item"
         :id="item"
-        :class="{'active':activeIndex === index }"
-        v-on:click="updateActive(index, categoryByIndex(index))"
-    >{{item}}
-    </li>
+        :class="{'active': activeCategoryIndex === index }"
+        @click="setActiveCategory(index, categoryByIndex(index))">{{item}}</li>
   </ul>
 </template>
 
@@ -14,19 +12,12 @@
 import { mapGetters, mapMutations } from 'vuex'
 
 export default {
-  props: [
-    'userRole'
-  ],
-  components: {},
-  data () {
-    return {
-      activeIndex: 0
-    }
-  },
-  computed: mapGetters(['getMenuItems', 'categoryByIndex']),
-  methods: {
-    ...mapMutations(['updateActive'])
-  }
+  computed: mapGetters([
+    'menuItems',
+    'categoryByIndex',
+    'activeCategoryIndex'
+  ]),
+  methods: mapMutations(['setActiveCategory'])
 }
 </script>
 
@@ -53,7 +44,7 @@ export default {
 
   ul li:hover,
   ul li.active {
-    font-size: 20px;
-    transition: font-weight .5s, font-size .5s;
+    font-weight: bold;
+    transition: font-weight .35s;
   }
 </style>

@@ -1,91 +1,37 @@
 import { locale } from '../../main'
-import { USER, CATEGORY, LAYOUT } from '../../js/Utils/Constants'
+import { APPLICATION, COMPONENTS } from '../../js/Utils/Constants'
 
 export default {
   state: {
     application: {
       authorized: false,
-      userSettings: {
-        userRole: 'admin',
-        categories: []
-      }
+      userRole: '',
+      title: APPLICATION.TITLE,
+      login: APPLICATION.LOGIN,
+      password: APPLICATION.PASSWORD,
+      mainContainer: COMPONENTS.LOGIN_FORM
     }
   },
-  mutations: {
-    updateUserRole (state, userRole) {
-      state.application.userSettings.userRole = userRole
-    },
-    setCategories (state, categories) {
-      state.application.userSettings.categories = categories
-    }
 
-  },
-  actions: {
-
-    initMenuItems (context, userRole) {
-      context.dispatch('getUserCategories', userRole)
-    },
-    getUserCategories (context, userRole) {
-      switch (userRole) {
-        case USER.ROLE.ADMIN: {
-          context.commit('setCategories', [
-            CATEGORY.ORDERS,
-            CATEGORY.REPORTS,
-            CATEGORY.CALENDAR,
-            CATEGORY.FACTORIES,
-            CATEGORY.PROVIDERS,
-            CATEGORY.STOCK
-          ])
-          break
-        }
-        case USER.ROLE.DIRECTOR: {
-          context.commit('setCategories', [
-            CATEGORY.ORDERS,
-            CATEGORY.REPORTS,
-            CATEGORY.CALENDAR,
-            CATEGORY.STOCK
-          ])
-          break
-        }
-        case USER.ROLE.VENDOR: {
-          context.commit('setCategories', [
-            CATEGORY.REPORTS,
-            CATEGORY.CALENDAR,
-            CATEGORY.STOCK
-          ])
-          break
-        }
-        default:
-          break
-      }
-    }
-  },
   getters: {
     application: (state) => state.application,
-    categoryByIndex: (state) => (index) => state.application.userSettings.categories[index],
-    getMenuItems (state) {
-      return state.application.userSettings.categories.map(category => {
-        return locale[category]
-      })
+    mainContainer: (state) => state.application.mainContainer,
+    titleKey: (state) => locale[state.application.title],
+    userRoleTitle: (state) => locale[state.application.userRole],
+    loginKey: (state) => locale[state.application.login],
+    passwordKey: (state) => locale[state.application.password]
+  },
+
+  mutations: {
+    updateUserRole (state, userRole) {
+      state.application.userRole = userRole
     },
-    getLayouts (state) {
-      console.log(state.application.userSettings.categories[0])
-      return state.application.userSettings.categories.map(category => {
-        switch (category) {
-          case CATEGORY.CALENDAR:
-            return { category: category, layout: LAYOUT.TABLE }
-          case CATEGORY.FACTORIES:
-            return { category: category, layout: LAYOUT.TABLE }
-          case CATEGORY.PROVIDERS:
-            return { category: category, layout: LAYOUT.TABLE }
-          case CATEGORY.ORDERS:
-            return { category: category, layout: LAYOUT.LEFT_MENU }
-          case CATEGORY.REPORTS:
-            return { category: category, layout: LAYOUT.LEFT_MENU }
-          case CATEGORY.STOCK:
-            return { category: category, layout: LAYOUT.TABLE }
-        }
-      })
+    setMainContainer (state, mainContainer) {
+      state.application.mainContainer = mainContainer
     }
+  },
+
+  actions: {
+
   }
 }
