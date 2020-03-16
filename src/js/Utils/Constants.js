@@ -1,19 +1,23 @@
-// const CATEGORY = {
-//     CALENDAR: "calendar",
-//     FACTORIES: "factories",
-//     ORDERS: "orders",
-//     PROVIDERS: "providers",
-//     REPORTS: "reports",
-//     STOCK: "stock",
-//
-// };
-//
+export const CATEGORY = {
+  CALENDAR: 'calendar',
+  FACTORIES: 'factories',
+  ORDERS: 'orders',
+  PROVIDERS: 'providers',
+  REPORTS: 'reports',
+  STOCK: 'stock'
+}
+
 export const USER = {
   ROLE: {
     ADMIN: 'admin',
     DIRECTOR: 'director',
     VENDOR: 'vendor'
   }
+}
+
+export const LAYOUT = {
+  LEFT_MENU: 'left-menu-layout',
+  TABLE: 'table-layout'
 }
 
 /** <li><a href="#manegers">Менеджеры</a></li>

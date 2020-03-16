@@ -38,10 +38,10 @@ export default {
       this.loggedIn = !this.loggedIn
       if (this.loggedIn) {
         this.mainContainer = 'app-main-container'
-        this.application.authorized = true
+        // this.application.authorized = true
       } else {
         this.mainContainer = 'app-login-form'
-        this.application.authorized = false
+        // this.application.authorized = false
       }
     })
   }

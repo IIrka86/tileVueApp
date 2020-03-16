@@ -1,0 +1,1 @@
+<template>  <div class="left-menu-layout"></div></template><script>export default {  name: "left-menu-layout"}</script><style scoped></style>

@@ -1,17 +1,17 @@
 <template>
   <ul>
-    <li v-for='(item,index) in getCategories'
+    <li v-for='(item,index) in getMenuItems'
         :key="item"
         :id="item"
         :class="{'active':activeIndex === index }"
-        v-on:click="activeIndex=index"
+        v-on:click="updateActive(index, categoryByIndex(index))"
     >{{item}}
     </li>
   </ul>
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters, mapMutations } from 'vuex'
 
 export default {
   props: [
@@ -23,7 +23,10 @@ export default {
       activeIndex: 0
     }
   },
-  computed: mapGetters(['getCategories'])
+  computed: mapGetters(['getMenuItems', 'categoryByIndex']),
+  methods: {
+    ...mapMutations(['updateActive'])
+  }
 }
 </script>
 
