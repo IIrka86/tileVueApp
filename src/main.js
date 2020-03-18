@@ -1,5 +1,5 @@
 import './css/main.css'
-import './css/bootstrap.min.css'
+import 'materialize-css/dist/js/materialize.min'
 
 import './js/Utils/Constants'
 import './js/Utils/LocaleKey'

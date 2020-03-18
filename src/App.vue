@@ -32,7 +32,8 @@ export default {
 
 </script>
 
-<style scoped>
+<style lang="scss">
+  @import "~materialize-css/dist/css/materialize.min.css";
   #app {
     position: relative;
     min-height: 100%;
