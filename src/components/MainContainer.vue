@@ -1,6 +1,5 @@
 <template>
-  <div>
-    <app-header></app-header>
+  <div class="container">
     <div id="main-container">
       <div v-for="(item, index) in getLayouts"
            :id="item.category"
@@ -13,13 +12,9 @@
 </template>
 
 <script>
-import Header from './Header.vue'
 import { mapGetters, mapMutations } from 'vuex'
 
 export default {
-  components: {
-    'app-header': Header
-  },
   computed: mapGetters([
     'getLayouts',
     'categoryByIndex',

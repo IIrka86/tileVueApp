@@ -9,6 +9,8 @@ import LocaleRu from './libs/json/LocaleRu.json'
 import Vue from 'vue'
 import App from './App.vue'
 import store from './store'
+import Footer from './components/Footer'
+import Header from './components/Header'
 // import * as uiv from 'uiv'
 
 export const eventBus = new Vue()
@@ -18,3 +20,12 @@ new Vue({ // eslint-disable-line no-new
   store,
   render: h => h(App)
 }).$mount('#app')
+
+new Vue({ // eslint-disable-line no-new
+  store,
+  render: h => h(Header)
+}).$mount('#header')
+
+new Vue({ // eslint-disable-line no-new
+  render: h => h(Footer)
+}).$mount('#footer')

@@ -1,7 +1,6 @@
 <template>
   <div id="app">
     <container v-bind:is='application.mainContainer'></container>
-    <app-footer></app-footer>
   </div>
 </template>
 
@@ -10,20 +9,20 @@ import { eventBus } from './main'
 import { COMPONENTS } from './js/Utils/Constants'
 import LoginForm from './components/LoginForm.vue'
 import MainContainer from './components/MainContainer.vue'
-import Footer from './components/Footer.vue'
 
 import { mapGetters, mapMutations } from 'vuex'
 
 export default {
   components: {
     'app-login-form': LoginForm,
-    'app-main-container': MainContainer,
-    'app-footer': Footer
+    'app-main-container': MainContainer
   },
   computed: mapGetters(['application']),
   methods: mapMutations(['setMainContainer']),
   created () {
     eventBus.$on('login', () => {
+      const elem = document.getElementsByTagName('main')[0]
+      elem.style.backgroundColor = '#e0f7fa'
       this.application.authorized = !this.application.authorized
       this.setMainContainer(this.application.authorized ? COMPONENTS.MAIN_CONTAINER : COMPONENTS.LOGIN_FORM)
     })
@@ -34,8 +33,4 @@ export default {
 
 <style lang="scss">
   @import "~materialize-css/dist/css/materialize.min.css";
-  #app {
-    position: relative;
-    min-height: 100%;
-  }
 </style>

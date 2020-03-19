@@ -1,30 +1,31 @@
 <template>
-  <div id="login-form">
-    <div class="form-container">
-      <form @submit.prevent="submit">
-        <div class="form-group row">
-          <div class="col-sm-12">
+  <div id="login-form" class="container">
+    <div class="row">
+      <form @submit.prevent="submit" class="col s12">
+        <div class="row">
+          <div class="s12">
             <h1>{{titleKey}}</h1>
           </div>
         </div>
-        <div class="form-group row">
-          <label for="login" class="col-sm-3 col-form-label">{{loginKey}}</label>
-          <div class="col-sm-9">
-            <input id="login" name="login" class="form-control" type="text" v-model="userRole">
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="login" name="login" type="text" v-model="userRole">
+            <label for="login">{{loginKey}}</label>
           </div>
         </div>
-        <div class="form-group row">
-          <label for="password" class="col-sm-3 col-form-label">{{passwordKey}}</label>
-          <div class="col-sm-9">
-            <input id="password" name="password" class="form-control" type="password">
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="password" name="password" type="password">
+            <label for="password">{{passwordKey}}</label>
           </div>
         </div>
-        <div class="form-group row">
-          <div class="col-sm-12">
-            <input id="login-btn" type="submit" value="Войти" class="btn btn-block">
+        <div class="row">
+          <div class="s12">
+            <button class="btn waves-effect waves-light" type="submit" name="action">Войти
+            </button>
           </div>
         </div>
-        <div class="form-group row">
+        <div class="row">
           <div class="col-sm-12">
             <p v-if="error">{{errorMessage}}</p>
           </div>
@@ -63,36 +64,38 @@ export default {
 
 <style scoped>
   #login-form {
-
-    position: fixed;
-    width: 100%;
     min-height: 100%;
-    padding-top: 250px;
-    padding-left: 40%;
-    padding-right: 40%;
-    background-color: #7952b3;
+    padding: 5% 20% 0 20%;
   }
 
   h1 {
-    color: white;
+    color: #e0f7fa;
     text-align: center;
   }
 
-  p {
-    color: red;
-    text-align: center;
-    font-size: 26px
-  }
+  /*p {*/
+  /*  color: red;*/
+  /*  text-align: center;*/
+  /*  font-size: 26px*/
+  /*}*/
 
-  label {
-    color: white;
-    font-size: 20px;
-    font-weight: 600;
-  }
+  /*.input-field input{*/
+  /*  border-bottom: 1px solid #37474f !important;*/
+  /*}*/
 
-  #login-btn {
-    background-color: #333333;
-    color: white;
-    font-size: 25px;
-  }
+  /*.input-field label {*/
+  /*  color: #37474f;*/
+  /*}*/
+
+  /*.input-field>label.active {*/
+  /*  color: #37474f;*/
+  /*  font-size: 20px;*/
+  /*  font-weight: 600;*/
+  /*}*/
+
+  /*#login-btn {*/
+  /*  background-color: #333333;*/
+  /*  color: white;*/
+  /*  font-size: 25px;*/
+  /*}*/
 </style>
