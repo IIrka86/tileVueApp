@@ -1,13 +1,10 @@
 <template>
-  <div class="header-container">
-    <div class="title">
-      <h1>{{titleKey}}</h1>
-      <h2>{{userRoleTitle}}</h2>
-    </div>
-    <div class="menu-items">
+  <nav>
+    <div class="nav-wrapper">
+      <a class="brand-logo">{{userRoleTitle}}</a>
       <top-menu></top-menu>
     </div>
-  </div>
+  </nav>
 </template>
 
 <script>
@@ -18,23 +15,12 @@ export default {
   components: {
     'top-menu': TopMenu
   },
-  computed: mapGetters(['titleKey', 'userRoleTitle'])
+  computed: mapGetters(['userRoleTitle'])
 }
 </script>
 
 <style scoped>
-  header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 100;
-    background: #7952b3;
-    padding: 0 20px;
-  }
-
-  h1, h2 {
-    color: white;
-    text-align: left;
+  nav {
+    background: #00838f;
   }
 </style>

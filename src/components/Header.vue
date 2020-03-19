@@ -19,11 +19,5 @@ export default {
 <style scoped>
   header {
     z-index: 100;
-    background: #00838f;
   }
-
-  /*h1, h2 {*/
-  /*  color: white;*/
-  /*  text-align: left;*/
-  /*}*/
 </style>
