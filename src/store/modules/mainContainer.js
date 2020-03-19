@@ -10,9 +10,9 @@ export default {
     }
   },
   mutations: {
-    setActiveCategory: (state, index, category) => {
+    setActiveCategory: (state, index) => {
       state.activeCategory.index = index
-      state.activeCategory.name = category
+      state.activeCategory.name = state.categories[index]
     },
     setCategories (state, categories) {
       state.categories = categories
@@ -59,27 +59,24 @@ export default {
   },
   getters: {
     activeCategoryIndex: (state) => state.activeCategory.index,
-    activeCategoryName: (state) => state.activeCategory.name,
-    categoryByIndex: (state) => (index) => state.categories[index],
     menuItems (state) {
       return state.categories.map(category => {
         return locale[category]
       })
     },
 
-    getLayouts (state) {
-      return state.categories.map(category => {
-        switch (category) {
-          case CATEGORY.CALENDAR:
-          case CATEGORY.FACTORIES:
-          case CATEGORY.PROVIDERS:
-          case CATEGORY.STOCK:
-            return { category: category, layout: LAYOUT.TABLE }
-          case CATEGORY.ORDERS:
-          case CATEGORY.REPORTS:
-            return { category: category, layout: LAYOUT.LEFT_MENU }
-        }
-      })
+    getLayout (state) {
+      const category = state.activeCategory.name
+      switch (category) {
+        case CATEGORY.CALENDAR:
+        case CATEGORY.FACTORIES:
+        case CATEGORY.PROVIDERS:
+        case CATEGORY.STOCK:
+          return LAYOUT.TABLE
+        case CATEGORY.ORDERS:
+        case CATEGORY.REPORTS:
+          return LAYOUT.LEFT_MENU
+      }
     }
   }
 }

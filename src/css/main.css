@@ -9,4 +9,5 @@ body{
 main{
     flex: 1 0 auto;
     background-color: #00838f;
+    overflow-y: scroll;
 }

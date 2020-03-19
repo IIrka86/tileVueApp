@@ -36,7 +36,7 @@
 </template>
 
 <script>
-import { eventBus } from '../main'
+import { eventBus } from '../../main'
 import { mapMutations, mapActions, mapGetters } from 'vuex'
 
 export default {

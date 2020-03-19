@@ -4,7 +4,7 @@
         :key="item"
         :id="item"
         :class="{'active': activeCategoryIndex === index }"
-        @click="setActiveCategory(index, categoryByIndex(index))"><a href="#">{{item}}</a></li>
+        @click="setActiveCategory(index)"><a href="#">{{item}}</a></li>
   </ul>
 </template>
 
@@ -14,7 +14,6 @@ import { mapGetters, mapMutations } from 'vuex'
 export default {
   computed: mapGetters([
     'menuItems',
-    'categoryByIndex',
     'activeCategoryIndex'
   ]),
   methods: mapMutations(['setActiveCategory'])

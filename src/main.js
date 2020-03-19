@@ -10,7 +10,7 @@ import Vue from 'vue'
 import App from './App.vue'
 import store from './store'
 import Footer from './components/Footer'
-import Header from './components/Header'
+import Header from './components/header/Header'
 // import * as uiv from 'uiv'
 
 export const eventBus = new Vue()

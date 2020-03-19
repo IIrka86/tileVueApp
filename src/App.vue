@@ -1,14 +1,14 @@
 <template>
   <div id="app">
-    <container v-bind:is='application.mainContainer'></container>
+    <component v-bind:is='application.mainContainer'></component>
   </div>
 </template>
 
 <script>
 import { eventBus } from './main'
 import { COMPONENTS } from './js/Utils/Constants'
-import LoginForm from './components/LoginForm.vue'
-import MainContainer from './components/MainContainer.vue'
+import LoginForm from './components/main-container/LoginForm.vue'
+import MainContainer from './components/main-container/MainContainer.vue'
 
 import { mapGetters, mapMutations } from 'vuex'
 

@@ -5,3 +5,9 @@
     </div>
   </footer>
 </template>
+
+<style>
+  footer{
+    top: 0;
+  }
+</style>
